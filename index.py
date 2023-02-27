@@ -2,7 +2,6 @@ import cv2
 import mediapipe as mp
 from PIL import ImageGrab
 import numpy as np
-import pyautogui
 
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
@@ -41,14 +40,7 @@ with mp_pose.Pose(
     image = cv2.resize(image, (0, 0), fx=scale, fy=scale)
 
     cv2.imshow('MediaPipe Pose', image)
-    key = cv2.waitKey(1)
-    if key == ord('a'):
-        head_pos = results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE]
-        head_x, head_y = int(head_pos.x * width), int(head_pos.y * height)
-        mouse_x, mouse_y = int(head_x * scale), int(head_y * scale)
-        target_x = int(mouse_x * scale_x)
-        target_y = int(mouse_y * scale_y)
-        pyautogui.moveTo(target_x, target_y,duration=0.25)
+    
     if cv2.waitKey(1) == ord('q'):
         break
 
