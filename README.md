@@ -25,3 +25,4 @@ pip install mediapipe
 ```
 py index.py
 ```
+# body-recognition
